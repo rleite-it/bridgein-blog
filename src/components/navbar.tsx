@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "@/routes";
 import { ModeToggle } from "./mode-toggle";
@@ -12,6 +11,7 @@ function Navbar() {
 			<div className="flex gap-8 items-center font-bold">
 				{ROUTES.map((item) => (
 					<NavLink
+						key={item.id}
 						to={item.path}
 						className={({ isActive }) => cn(isActive ? "text-[#cc0000]" : "")}
 					>
