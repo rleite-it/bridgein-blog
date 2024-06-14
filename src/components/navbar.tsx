@@ -9,15 +9,20 @@ function Navbar() {
 		<nav className="w-[75%] max-w-5xl flex justify-between items-center">
 			<img src={logo} alt="logo" />
 			<div className="flex gap-8 items-center font-bold">
-				{ROUTES.map((item) => (
-					<NavLink
-						key={item.id}
-						to={item.path}
-						className={({ isActive }) => cn(isActive ? "text-[#cc0000]" : "")}
-					>
-						{item.id?.toUpperCase()}
-					</NavLink>
-				))}
+				{ROUTES.map(
+					(item) =>
+						item.id !== "index" && (
+							<NavLink
+								key={item.id}
+								to={item.path}
+								className={({ isActive }) =>
+									cn(isActive ? "text-[#cc0000]" : "")
+								}
+							>
+								{item.id?.toUpperCase()}
+							</NavLink>
+						)
+				)}
 				<ModeToggle />
 			</div>
 		</nav>
