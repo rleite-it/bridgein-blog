@@ -70,7 +70,7 @@ export const usePosts = () => {
 		if (selectedPost !== null) {
 			const commentLayout: CommentProps = {
 				postId: selectedPost?.id,
-				id: selectedPost?.comments && selectedPost?.comments?.length + 1,
+				id: Math.floor(Math.random() * 100000),
 				email: "user@bridgein.com",
 				name: "User",
 				body: value,
