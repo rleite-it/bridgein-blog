@@ -26,6 +26,7 @@ function Feed() {
 		user,
 		addComment,
 		deleteComment,
+		editComment,
 	} = usePosts();
 	const { loadingUser } = useUser();
 	const [inputValue, setInputValue] = useState<string | null>(null);
@@ -128,9 +129,8 @@ function Feed() {
 													key={`comment-${comment.id}`}
 													author={comment.email}
 													body={comment.body}
-													editComment={() => console.log("editou")}
+													editComment={(val) => editComment(comment.id, val)}
 													deleteComment={() => deleteComment(comment.id)}
-													isAuthor={comment.email === user?.email}
 												/>
 											))
 										) : (

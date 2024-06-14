@@ -113,6 +113,36 @@ export const usePosts = () => {
 		}
 	};
 
+	const editComment = (commentId: number, val: string) => {
+		if (selectedPost !== null) {
+			const commentIndex = selectedPost.comments?.findIndex(
+				(comment) => comment.id === commentId
+			);
+			const commentLayout: CommentProps = {
+				postId: selectedPost?.id,
+				id: selectedPost.comments[commentIndex].id,
+				email: selectedPost.comments[commentIndex]?.email,
+				name: selectedPost.comments[commentIndex]?.name,
+				body: val,
+			};
+
+			const commentsArr = selectedPost.comments;
+			commentsArr?.splice(commentIndex, 1, commentLayout);
+
+			const updatedPost = {
+				...selectedPost,
+				comments: commentsArr,
+			};
+
+			const result = data.map((post) =>
+				post.id === selectedPost.id ? updatedPost : post
+			);
+
+			setSelectedPost(updatedPost); // Update with a new object
+			setData(result);
+		}
+	};
+
 	return {
 		data,
 		loading,
@@ -127,5 +157,6 @@ export const usePosts = () => {
 		user,
 		addComment,
 		deleteComment,
+		editComment,
 	};
 };
