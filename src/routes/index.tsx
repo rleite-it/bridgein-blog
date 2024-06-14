@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteProps } from "react-router-dom";
+import { RouteProps, Navigate } from "react-router-dom";
 
 const Feed = React.lazy(() => import("@/pages/Feed"));
 const Users = React.lazy(() => import("@/pages/Users"));
@@ -14,5 +14,10 @@ export const ROUTES: RouteProps[] = [
 		id: "users",
 		path: "/users",
 		element: <Users />,
+	},
+	{
+		id: "index",
+		path: "/",
+		element: <Navigate to="/feed" replace />,
 	},
 ];
