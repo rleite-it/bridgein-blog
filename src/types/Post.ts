@@ -5,5 +5,5 @@ export type PostProps = {
 	id: number;
 	title: string;
 	body: string;
-	comments: CommentProps[];
+	comments?: CommentProps[];
 };
